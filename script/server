@@ -17,6 +17,10 @@ main() {
     tar -xf public.tar.bz2
   fi
 
+  if [[ -f HEROKU_SLUG_COMMIT ]]; then
+    HEROKU_SLUG_COMMIT=$(cat ./HEROKU_SLUG_COMMIT)
+  fi
+
   if [[ "${RACK_ENV}" == development ]] &&
     [[ ! -f /.dockerenv ]] &&
     [[ ! "${DISABLE_RERUN}" ]]; then
